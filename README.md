@@ -12,4 +12,4 @@ F5 key is exception for refreshing the page
 
 Space will be marked as "-"
 
-win, lose, correct sound
+background, win, lose, correct sound
