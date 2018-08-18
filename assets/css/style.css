@@ -1,0 +1,19 @@
+body {background: #222;font-family: 'Oswald',sans-seriff;color: #fff;height: 100%;text-align: center;font-size: 18px;}
+h1, h2, h3 {font-family: 'Open Sans',arial, sans-serif;text-transform: uppercase;margin: 5px 0;}
+h1 {font-size: 2.6em;font-weight: 600;}
+h2 {font-size: 1.6em;font-weight: 100;opacity: 1;transition: opacity 1s;color:#fff;}
+h2.fade{opacity:0;transition: opacity 1s;color:#b40707ef!important;}
+h3 {font-size: 1.2em;font-weight: 100;}
+p {font-size: 1.6em;}
+.wrapper {display: flex;margin-top:25px;}
+.section_block{padding:15px 0;border-bottom: 1px solid rgba(0, 0, 0, .5);}
+.left,.right{flex: 1;padding: 10px;border: 1px solid #e2e2e2;}
+.left{flex: 1;}
+.right{flex: 2;}
+.guess{    position: relative;
+list-style: none;
+margin: 0;
+display: inline-block;
+padding: 0 10px;
+font-size: 1.6em;}
+#winBox{color:#b40707ef;font-size: 1.6em;}
