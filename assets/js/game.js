@@ -24,7 +24,7 @@ function hangman () {
     this.lettersAlreadyGuessedBox = document.getElementById("lettersAlreadyGuessedBox");
     
     this.embed = '';
-    this.bg_sound = "assets/mp3/tick.mp3";
+    this.bg_sound = "assets/mp3/bg.mp3";
     this.correct_sound = "assets/mp3/tick.mp3";
     this.win_sound = "assets/mp3/win.mp3";
     this.lose_sound = "assets/mp3/lose.mp3";
@@ -60,6 +60,7 @@ function hangman () {
             // append to div
             this.correctWordsBox.appendChild(guess);
         }
+        this.playMp3(this.bg_sound,"true");
     }
     this.duplicate_word_cnt = function (obj, needle){
         var cnt = 0;
@@ -96,7 +97,7 @@ function hangman () {
                     }else{
                         this.correct_cnt += 1;
                     }
-                    this.playMp3(this.correct_sound);
+                    this.playMp3(this.correct_sound,"false");
                 }
             }
         }
@@ -141,7 +142,7 @@ function hangman () {
             }
             //setup end flag
             this.endFlag=1;
-            this.playMp3(this.lose_sound);
+            this.playMp3(this.lose_sound,"false");
         }
         //if win
         //if total number of correct count and space count is equal to correct city name's count
@@ -156,7 +157,7 @@ function hangman () {
                 //setTimeout(function(){clearInterval(this.interval);this.interval=0;this.restartInfo.classList.remove("fade");},5000);
             }
             this.endFlag=1;
-            this.playMp3(this.win_sound);
+            this.playMp3(this.win_sound,"false");
         }
         //if game is still running, and got wrong guess, add into lettersAlreadyGuessedBox
         this.lettersAlreadyGuessedBox.innerHTML='';
@@ -189,13 +190,13 @@ function hangman () {
         //after reset, play
         this.play();
     }
-    this.playMp3=function(source){
+    this.playMp3=function(source, loop){
         this.embed=document.createElement("embed");
         this.embed.setAttribute("src",source);
         this.embed.setAttribute("hidden","true");
         this.embed.setAttribute("volume","100");
         this.embed.setAttribute("autostart","true");
-        this.embed.setAttribute("loop","false");
+        this.embed.setAttribute("loop",loop);
         document.body.appendChild(this.embed);
     }
 }
