@@ -1,7 +1,7 @@
 function hangman () {
     this.alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    this.cities = ['seoul','tokyo','jerusalem'];
-    this.hint = ['korea','japan','Israel'];
+    this.cities = ['seoul','london','paris','berlin','rome','tokyo','jakarta','new delhi','beijing','amsterdam','panama city','Kuala Lumpur','washington dc'];
+    this.hint = ['S.Korea','England','France','Germany','Italy','Japan','Indonesia','India','China','Netherlands','Panama','Malaysia','United States'];
     
     this.interval = 0;
     this.winCnt = 0;
@@ -24,6 +24,7 @@ function hangman () {
     this.lettersAlreadyGuessedBox = document.getElementById("lettersAlreadyGuessedBox");
     
     this.embed = '';
+    this.bg_sound = "assets/mp3/tick.mp3";
     this.correct_sound = "assets/mp3/tick.mp3";
     this.win_sound = "assets/mp3/win.mp3";
     this.lose_sound = "assets/mp3/lose.mp3";
@@ -82,7 +83,7 @@ function hangman () {
                 //count how many same words in chose_city 
                 
                 //change _ to letter
-                this.correctWords[i].innerHTML = guessed_word;
+                this.correctWords[i].innerHTML = guessed_word.toUpperCase();
 
                 if(this.correctWords_track.includes(guessed_word)){
                     //don't increase correct count as already counted
@@ -168,7 +169,7 @@ function hangman () {
     }
     this.getHint = function (index){
         //get hint with index and show
-        this.hint_scr.innerHTML = "Hint: City of "+ this.hint[index].toUpperCase();
+        this.hint_scr.innerHTML = "Hint: Capital of "+ this.hint[index].toUpperCase();
     }
     //reset the game. set to default
     this.reset = function (){
@@ -188,12 +189,7 @@ function hangman () {
         //after reset, play
         this.play();
     }
-    this.stopMp3=function()
-    {
-        document.body.removeChild(this.embed);
-    }
-    this.playMp3=function(source)
-    {
+    this.playMp3=function(source){
         this.embed=document.createElement("embed");
         this.embed.setAttribute("src",source);
         this.embed.setAttribute("hidden","true");
